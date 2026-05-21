@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .section-bar { @apply h-2 rounded-full bg-gray-100 overflow-hidden; }
+  .section-bar-fill { @apply h-full rounded-full bg-green-500 transition-all duration-500; }
+  .card { @apply bg-white rounded-xl border border-gray-200 shadow-sm; }
+  .input-base {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900
+           focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent
+           placeholder:text-gray-400 transition-colors;
+  }
+  .btn-primary {
+    @apply bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2
+           rounded-lg transition-colors duration-150 cursor-pointer;
+  }
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-gray-700 font-medium px-4 py-2
+           border border-gray-300 rounded-lg transition-colors duration-150 cursor-pointer;
+  }
+  .btn-ghost {
+    @apply hover:bg-gray-100 text-gray-600 font-medium px-3 py-1.5
+           rounded-lg transition-colors duration-150 cursor-pointer text-sm;
+  }
+}
+
+/* ── Print styles ─────────────────────────────────────────── */
+@media print {
+  #sidebar,
+  #topbar,
+  #print-hide,
+  .no-print { display: none !important; }
+
+  #report-content {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body { background: white !important; font-size: 11pt; }
+
+  .print-page-break { page-break-before: always; }
+
+  table { page-break-inside: avoid; }
+
+  h2, h3 { page-break-after: avoid; }
+
+  @page {
+    margin: 2cm;
+    size: A4;
+  }
+}
+
+/* ── Progress ring ───────────────────────────────────────── */
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.6s ease;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
